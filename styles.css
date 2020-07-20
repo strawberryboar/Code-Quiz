@@ -1,0 +1,99 @@
+/*makes all of the widths and font easier to style*/
+/**/
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+/*This will change color based on correct / incorrect answers*/
+
+:root {
+    --hue-neutral: 200;
+    --hue-wrong: 0;
+    --hue-correct: 145;
+}
+
+body {
+    /*This makes a variable for the color of the body while an answer isnt picked*/
+    --hue: var(--hue-neutral);
+    padding: 0;
+    margin: 0;
+    /*display and justify-content keeps in the center*/
+    display: flex;
+    /*VW / VH is view width / view height*/
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    /*HSL is a way to navigate hue, saturation, and brightness*/
+    background-color: hsl(var(--hue), 100%, 20%);
+}
+/*class that changes body when answer is correct*/
+body.correct{
+    --hue: var(--hue-correct);
+}
+
+body.wrong {
+    --hue: var(--hue-wrong);
+}
+
+.container {
+    width: 800px;
+    max-width: 80%;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 10px;
+    /*box-shadow adds a shadow*/
+    box-shadow: 0 0 5px 2px;
+}
+
+h1 {
+    text-align: center;
+}
+
+/*lines up buttons in 2 columns next to eachother*/
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+/*button styling*/
+.btn {
+    --hue: var(--hue-neutral);
+    background-color: hsl(var(--hue), 100%, 50%);
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #eee;
+    outline: none;
+}
+/*button hover styling*/
+.btn:hover {
+    border-color: black;
+}
+
+.btn.correct {
+    --hue: var(--hue-correct);
+    /*makes text easier to see*/
+    color: black;
+}
+
+.btn.wrong {
+    --hue: var(--hue-wrong);
+}
+
+.start-btn, .next-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+/*controls wraps the buttons, this will align to center*/
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
